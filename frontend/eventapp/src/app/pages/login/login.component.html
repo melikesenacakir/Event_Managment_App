@@ -1,0 +1,102 @@
+<mat-grid-list cols="12">
+    <img src="assets/design.png" alt="design" class="design">
+<img src="assets/design.png" alt="design" class="design-2">
+    <mat-grid-tile colspan="3">
+        <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card" >
+        <div>
+            <label for="username" class="user-label">Username</label>
+            <input type="text" id="username" formControlName="username" name="username">
+        </div>
+        <div>
+            <label for="password" class="user-label">Password</label>
+            <input type="password" id="password" formControlName="password" name="password">
+        </div>
+        <div class="forgetpass">
+            <mat-radio-group formControlName="forgetpassword" class="forgetpass" (click)="openNewPasswordPage()">
+                <mat-radio-button routerLink="/forgetpass" value="Forget Password">Forget Password</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div>
+           <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+    <div *ngIf="loginError">
+        <p>{{ loginError }}</p>
+    </div>
+    
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" class="bear-img">
+        <img src="assets/bear.png" alt="bear" class="bear imgs">
+    </mat-grid-tile>
+    <img src="assets/design.png" alt="design" class="design-3">
+    <img src="assets/design.png" alt="design" class="design-4">
+</mat-grid-list>
+
+<!-- <app-navbar></app-navbar>
+<mat-grid-list cols="12">
+    <img src="assets/design.png" alt="design" class="design">
+    <img src="assets/design.png" alt="design" class="design-2">
+    <mat-grid-tile colspan="3">
+        <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card" *ngFor="let inps of inputs">
+        <div *ngFor="let inp of inps.lInput ">
+            <div>
+                <label for="{{inp.formControlName}}" class="user-label">{{inp.label}}</label>
+                <input type="{{inp.type}}" id="{{inp.formControlName}}" formControlName="{{inp.formControlName}}" name="{{inp.formControlName}}">
+            </div>
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid">{{inps.title}}</button>
+    </form>
+    <div *ngIf="loginError">
+        <p>{{ loginError }}</p>
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" class="bear-img">
+        <img src="assets/bear.png" alt="bear" class="bear imgs">
+    </mat-grid-tile>
+    <img src="assets/design.png" alt="design" class="design-3">
+    <img src="assets/design.png" alt="design" class="design-4">
+</mat-grid-list> -->
+
+<!-- <app-navbar></app-navbar>
+<mat-grid-list cols="12">
+    <img src="assets/design.png" alt="design" class="design">
+<img src="assets/design.png" alt="design" class="design-2">
+    <mat-grid-tile colspan="3">
+        <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card" >
+        <div>
+            <label for="username" class="user-label">Username</label>
+            <input type="text" id="username" formControlName="username" name="username">
+        </div>
+        <div>
+            <label for="password" class="user-label">Password</label>
+            <input type="password" id="password" formControlName="password" name="password">
+        </div>
+        <div class="forgetpass">
+            <mat-radio-group formControlName="forgetpassword" class="forgetpass" (click)="openRegistrationPage()">
+                <mat-radio-button value="Forget Password">Forget Password</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div>
+           <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+    <div *ngIf="loginError">
+        <p>{{ loginError }}</p>
+    </div>
+    
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" class="bear-img">
+        <img src="assets/bear.png" alt="bear" class="bear imgs">
+    </mat-grid-tile>
+    <img src="assets/design.png" alt="design" class="design-3">
+    <img src="assets/design.png" alt="design" class="design-4">
+</mat-grid-list> -->
