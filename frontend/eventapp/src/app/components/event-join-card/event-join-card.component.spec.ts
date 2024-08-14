@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventJoinComponent } from './event-join.component';
+import { EventJoinCardComponent } from './event-join-card.component';
 
-describe('EventJoinComponent', () => {
-  let component: EventJoinComponent;
-  let fixture: ComponentFixture<EventJoinComponent>;
+describe('EventJoinCardComponent', () => {
+  let component: EventJoinCardComponent;
+  let fixture: ComponentFixture<EventJoinCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EventJoinComponent]
+      imports: [EventJoinCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EventJoinComponent);
+    fixture = TestBed.createComponent(EventJoinCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
