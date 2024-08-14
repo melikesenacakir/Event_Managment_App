@@ -30,8 +30,10 @@
            <button type="submit" [disabled]="!registerForm.valid">Register</button>
         </div>
     </form>
-    <div *ngIf="registerError">
-        <p>{{ registerError }}</p>
+    <div >
+        @if (registerError) {
+            <p>{{ registerError }}</p>
+        }
     </div>
     
     </mat-grid-tile>

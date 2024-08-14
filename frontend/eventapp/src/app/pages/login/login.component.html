@@ -23,8 +23,11 @@
            <button type="submit" [disabled]="!loginForm.valid">Login</button>
         </div>
     </form>
-    <div *ngIf="loginError">
-        <p>{{ loginError }}</p>
+    
+    <div>
+        @if (loginError) {
+            <p>{{ loginError }}</p>
+        }
     </div>
     
     </mat-grid-tile>
