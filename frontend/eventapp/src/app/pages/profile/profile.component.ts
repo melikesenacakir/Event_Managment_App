@@ -41,6 +41,10 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.getUser(4);
     this.profileForm.get('username')?.setValue(this.users[0].username);
+    this.profileForm.get('name')?.setValue(this.users[0].name);
+    this.profileForm.get('surname')?.setValue(this.users[0].surname);
+    this.profileForm.get('email')?.setValue(this.users[0].email);
+
   }
 
   getUsers(): void {

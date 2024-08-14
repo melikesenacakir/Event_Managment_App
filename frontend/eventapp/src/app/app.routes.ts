@@ -10,7 +10,7 @@ import { EventComponent } from './pages/event/event.component';
 export const routes: Routes = [
     {path: '', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'home', component: ProfileComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'forgetpass', component: ForgetpasswordComponent},
     {path: 'profile',component: ProfileComponent},
     {path: 'events',component: EventComponent},
