@@ -1,0 +1,43 @@
+<mat-grid-list cols="12">
+    <img src="assets/design.png" alt="design" class="design">
+<img src="assets/design.png" alt="design" class="design-2">
+    <mat-grid-tile colspan="3">
+        <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="6" class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="card" >
+        <div>
+            <label for="name" class="user-label">Name</label>
+            <input type="text" id="name" formControlName="name" name="name">
+        </div>
+        <div>
+            <label for="surname" class="user-label">Surname</label>
+            <input type="text" id="surname" formControlName="surname" name="surname">
+        </div>
+        <div>
+            <label for="email" class="user-label">Email</label>
+            <input type="email" id="email" formControlName="email" name="email">
+        </div>
+        <div>
+            <label for="username" class="user-label">Username</label>
+            <input type="text" id="username" formControlName="username" name="username">
+        </div>
+        <div>
+            <label for="password" class="user-label">Password</label>
+            <input type="password" id="password" formControlName="password" name="password">
+        </div>
+        <div>
+           <button type="submit" [disabled]="!registerForm.valid">Register</button>
+        </div>
+    </form>
+    <div *ngIf="registerError">
+        <p>{{ registerError }}</p>
+    </div>
+    
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" class="bear-img">
+        <img src="assets/bear.png" alt="bear" class="bear imgs">
+    </mat-grid-tile>
+    <img src="assets/design.png" alt="design" class="design-3">
+    <img src="assets/design.png" alt="design" class="design-4">
+</mat-grid-list>
