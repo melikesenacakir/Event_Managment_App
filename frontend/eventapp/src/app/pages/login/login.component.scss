@@ -19,8 +19,6 @@ button{
     padding: 10px; 
     height: auto;
     display: block;
-    
-    //margin-right: 20px;
 }
 img{
     user-select: none;
@@ -79,7 +77,6 @@ img{
 
 input{
     box-shadow: 0 2px #666;
-    //display: flex;
     border-radius: 10px;
     padding: 10px;
     margin: auto;
@@ -88,13 +85,10 @@ input{
     border-style:none; 
     font-size: medium;
     height: 5%;
-   // width: 80%;
-   // margin-top: 30px;
     display: block;
 }
 
 form{
-    
     position: relative;
     align-items: center;
 }
@@ -111,14 +105,12 @@ input,.user-label,mat-radio-group {
     width: 100%; 
 }
 
-
 .container{
     justify-content: center;
     align-items: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
-
 }
 .card{
     background-color: #EBFFEE;
@@ -132,7 +124,7 @@ input,.user-label,mat-radio-group {
 }
 
 .forgetpass{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Courier New', Courier, monospace;
     margin-top: 15px; 
     margin-bottom: 15px; 
     align-self: flex-start;

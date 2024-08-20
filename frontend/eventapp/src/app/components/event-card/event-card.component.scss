@@ -1,0 +1,116 @@
+.container {
+    display: flex;
+    height: 80vh;
+  }
+  
+  .card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 90vh; 
+    max-width: 90vw;
+  
+  }
+  img{
+    width: 100%;
+    height: 40vh;
+    object-fit: inherit;
+  }
+
+  .close{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    width: 80px;
+    height: auto;
+    border-style: none;
+    background-color: transparent;
+    margin: 0 0 6% auto;
+  }
+
+  .btn1 {
+    display: block;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 10px;
+    width: 80px;
+    height: auto;
+    border-style: none;
+    background-color: #65558F;
+    color: white;
+    ::shadow {
+      box-shadow: 0 2px #968d8d;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+    margin: 2% 3% 5% auto;
+  }
+  
+.icon-text{
+    display: flex;
+    flex-direction: row;
+    p{
+        margin-left: 5%;
+    }
+    span{
+        margin-left: 2%;
+    }
+}
+.desc{
+    p{
+        margin-left: 4%;
+    }
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    span{
+      width: 80px;
+    }
+    img{
+      width: 6vh;
+      height: 6vh;
+      object-fit: cover;
+      border-style: solid;
+      border-radius: 60px;
+    }
+}
+
+.titles{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 20px;
+    p{
+        font-size: 15px;
+        margin-left: 3px;
+    }
+    .title{
+        margin-top: 10px;
+        font-weight: bold;
+    }
+}
+
+  @media only screen and (min-width: 801px) {
+    .card {
+      width: 450px;
+    }
+  }
+  
+  @media only screen and (min-width: 400px) and (max-width: 800px) {
+    .card {
+      width: 60%;
+      max-width: 430px;
+      min-width: 300px;
+    }
+  }

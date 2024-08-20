@@ -1,0 +1,14 @@
+<mat-grid-list cols="12">
+    <mat-grid-tile colspan="12" class="container" >
+        <form [formGroup]="messageForm" class="card">
+          <div>
+            <label for="message" class="user-label">Send Message</label>
+            <input type="text" id="message" formControlName="message" name="message" placeholder="Message" autofocus>
+        </div>
+        <div>
+          <button type="submit" class="btn1">Cancel</button>
+          <button type="button" class="btn2">Send</button>
+        </div>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
