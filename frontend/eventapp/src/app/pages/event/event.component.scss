@@ -1,0 +1,110 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-container{
+    display: inline;
+    justify-content: center;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+input {
+    margin-top: 20px;
+    box-shadow: 0 1px #968d8d;
+    background-color: #CFF7D3;
+    padding: 15px;
+    border-style: outset;
+    font-size: medium;
+    width: 60%;
+    text-align: center;
+    color: #1D192B;
+    position: relative;
+}
+.inpdiv{
+  width: 100%;
+  height: 80px;
+  position: relative;
+}
+mat-paginator{
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.inp-right{
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  float: left;
+  z-index: 0;
+}
+.icon-left{
+  float: right;
+  margin-top: 33px;
+  cursor: pointer;
+  color:#02542D;
+  position: relative;
+  z-index: 2;
+  margin-left: 30px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 56%;
+}
+
+.icon-right{
+  float: left;
+  margin-top: 33px;
+  cursor: pointer;
+  color:#02542D;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 41%;
+}
+
+.inp-left{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  float: right;
+  z-index: 0;
+}
+
+mat-form-field{
+  margin-top: 80px;
+  width: 18%;
+}
+
+
+p{
+  color: #1D192B;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+::ng-deep .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
+  border-radius: 25px!important;
+} //bu şekilde tüm her yerdeki mat-selectlerin border-radiusunu değiştirebiliriz.
+
+.mat-mdc-paginator{
+  border-radius: 20px;
+  background-color:azure;
+}
+
+@media only screen and (min-width:0px) and (max-width: 550px) {
+  mat-form-field{
+    margin-top: 100px;
+    width: 47%;
+  }
+}

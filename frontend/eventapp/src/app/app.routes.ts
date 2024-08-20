@@ -6,6 +6,11 @@ import { ForgetpasswordComponent } from './pages/login/forgetpassword/forgetpass
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EventComponent } from './pages/event/event.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
+import { JoinComponent } from './components/event-card/join/join.component';
+import { EventJoinCardComponent } from './components/event-join-card/event-join-card.component';
+import { UserEventsComponent } from './pages/event/user-events/user-events.component';
+import { SendMessageComponent } from './components/send-message/send-message.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -14,5 +19,11 @@ export const routes: Routes = [
     {path: 'forgetpass', component: ForgetpasswordComponent},
     {path: 'profile',component: ProfileComponent},
     {path: 'events',component: EventComponent},
+    {path: 'events/:id',component: EventCardComponent},
+    {path: 'join',component: JoinComponent},
+    {path: 'myevents',component: UserEventsComponent},
+    {path: 'myevents/:id',component: EventCardComponent},
+    {path: 'myevents/:id/join',component: EventJoinCardComponent},
+    {path: 'myevents/:id/send',component: SendMessageComponent},
     {path: '**', component: NotFoundComponent } //iki yıldız içerisindeki hiçbir pathle eşleşmiyorsa demektir.
 ];

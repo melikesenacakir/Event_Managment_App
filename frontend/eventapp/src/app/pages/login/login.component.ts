@@ -42,7 +42,6 @@ export class LoginComponent {
     
   }
   onClick() : void {
-    //this.loginForm
 
   }
   

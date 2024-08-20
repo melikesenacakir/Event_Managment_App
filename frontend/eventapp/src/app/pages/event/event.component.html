@@ -1,4 +1,42 @@
-<!-- <div *ngFor="let event of events">
-<p>{{event.title}}</p>
+<div>
+  <mat-form-field>
+    <mat-label>Monthly Events</mat-label>
+    <mat-select (selectionChange)="onEventChange($event)">
+      @for(month of months; track month){
+      <mat-option [value]="month.value">
+        {{ month.name }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 </div>
- -->
+<div class="container">
+  <div class="input-container">
+    <ng-container *ngFor="let event of events;let i = index">
+      @if(i % 2 == 0){
+      <div style="width: 100%;
+        height: 100px;
+        position: relative;">
+        <input matInput type="text" id="event.id" name="name" disabled class="inp-right" [(ngModel)]="event.title" />
+        <button matSuffix mat-icon-button class="icon-right" (click)="onClick(event)"><mat-icon>keyboard_double_arrow_right</mat-icon></button>
+      </div>
+      }
+      @else{
+      <div style="width: 100%;
+      height: 100px;
+      position: relative;">
+        <input matInput type="text" id="event.id" name="name" disabled class="inp-left" [(ngModel)]="event.title" />
+        <button matSuffix mat-icon-button class="icon-left" (click)="onClick(event)"><mat-icon>keyboard_double_arrow_left</mat-icon></button>
+      </div>
+      }
+    </ng-container>
+    @if (notFound){
+    <p>No events found</p>
+    }
+  </div>
+  <div class="button-container">
+    <mat-paginator aria-label="Select page" [hidePageSize]="isHidePageSize" [length]="eventLength" [pageSize]="5"
+      (page)="navigatePage($event)">
+    </mat-paginator>
+  </div>
+</div>

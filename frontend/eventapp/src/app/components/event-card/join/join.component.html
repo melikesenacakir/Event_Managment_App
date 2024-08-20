@@ -1,7 +1,7 @@
-<mat-grid-list cols="12">
-    <mat-grid-tile colspan="12" class="container" >
+<mat-grid-list cols="12" class="container">
+    <mat-grid-tile colspan="12" >
+      <img src="/assets/join.png" alt="cover">
         <form [formGroup]="joinForm" class="card">
-        <button matSuffix mat-icon-button class="close"><span class="material-icons">cancel</span></button> 
           <div>
             <label for="name" class="user-label">Name</label>
             <input type="text" id="name" formControlName="name" name="name">
@@ -14,12 +14,15 @@
             <label for="email" class="user-label">Email</label>
             <input type="email" id="email" formControlName="email" name="email">
         </div>
+        <div class="attend">
+          <mat-radio-group formControlName="attend">
+              <mat-radio-button  value="attend">Kesin olarak katılacağım</mat-radio-button>
+              <span class="material-icons">directions_walk</span>
+              <p>gelememe durumunda bildiriniz!</p>
+          </mat-radio-group>
+      </div>
         <div>
-            <label for="enrollment" class="user-label">Enrollment</label>
-            <input type="number" id="enrollment" formControlName="enrollment" name="enrollment" class="enroll" placeholder="1" min="0">
-        </div>
-        <div>
-          <button type="submit" class="btn1" >Register</button>
+          <button type="submit" class="btn1" >Join</button>
         </div>
       </form>
     </mat-grid-tile>

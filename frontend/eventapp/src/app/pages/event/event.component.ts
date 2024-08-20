@@ -1,20 +1,52 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../models/event';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogRef , MatDialogModule} from '@angular/material/dialog';
+import { EventCardComponent } from '../../components/event-card/event-card.component';
 
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [  CommonModule],
+  imports: [CommonModule, MatPaginatorModule, FormsModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './event.component.html',
-  styleUrl: './event.component.scss'
+  styleUrl: './event.component.scss',
 })
 export class EventComponent {
- events: Event[];
+  events: Event[];
+  eventsPerPage: number = 5
+  selectedPage: number = 1;
+  eventLength: number = 0;
+  isHidePageSize: boolean = true;
+  notFound: boolean = false;
 
-  constructor(private eventService: EventsService) {
+  months = [
+    { name: 'All', value: 0 },
+    { name: 'January', value: 1 },
+    { name: 'February', value: 2 },
+    { name: 'March', value: 3 },
+    { name: 'April', value: 4 },
+    { name: 'May', value: 5 },
+    { name: 'June', value: 6 },
+    { name: 'July', value: 7 },
+    { name: 'August', value: 8 },
+    { name: 'September', value: 9 },
+    { name: 'October', value: 10 },
+    { name: 'November', value: 11 },
+    { name: 'December', value: 12 }
+  ];
+
+
+  constructor(private eventService: EventsService,
+    private dialogRef: MatDialog
+  ) {
     this.events = [];
   }
 
@@ -23,17 +55,26 @@ export class EventComponent {
   }
 
   getEvents(): void {
+    let index = (this.selectedPage - 1) * this.eventsPerPage;
     this.eventService.getEvents()
-    .subscribe(events => this.events = events);
+      .subscribe(events => {
+        this.eventLength = events.length;
+          this.events = events.sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB.getTime() - dateA.getTime();
+        });
+        this.events = events.slice(index, index + this.eventsPerPage);
+      });
   }
 
   getEvent(id: number): void {
     this.eventService.getEvent(id)
-    .subscribe(event => {
-      if (event) {
-        this.events.push(event);
-      }
-    });
+      .subscribe(event => {
+        if (event) {
+          this.events.push(event);
+        }
+      });
   }
 
   deleteEvent(event: Event): void {
@@ -49,4 +90,50 @@ export class EventComponent {
     this.eventService.updateEvent(event).subscribe();
   }
 
+  navigatePage(page: PageEvent): void {
+    if (page.pageIndex + 1 > this.selectedPage) {
+      this.selectedPage++;
+    } else if (page.pageIndex < this.selectedPage) {
+      if (this.selectedPage > 1) {
+        this.selectedPage--;
+      }
+    }
+    this.getEvents();
+  }
+
+  nextPage(): void {
+    if (this.selectedPage * this.eventsPerPage < this.eventLength) {
+      this.selectedPage++;
+      this.getEvents();
+    }
+  }
+
+  onEventChange(event: any): void {
+    console.log(event.value);
+    const selected = event.value;
+    this.eventService.getEvents()
+      .subscribe(events => {
+        if (selected == 0) {
+          this.getEvents();
+          return;
+        } else {
+          this.events = events.filter(e => new Date(e.date).getMonth() === selected - 1);
+        }
+        this.eventLength = this.events.length;
+      });
+    if (this.events.length == 0) {
+      this.notFound = true;
+    } else {
+      this.notFound = false;
+    }
+  }
+ 
+  onClick(event : Event): void {
+    this.dialogRef.open(EventCardComponent, {
+      width: '30vw',
+      height: '80vh',
+      data: { event: event }
+    });
+     
+  }
 }
