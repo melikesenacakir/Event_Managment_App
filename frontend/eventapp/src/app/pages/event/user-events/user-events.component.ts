@@ -12,7 +12,6 @@ import { EventUser } from '../../../models/eventusers';
 import { EventUsersService } from '../../../services/event-users.service';
 import { FormsModule } from '@angular/forms';
 import { SendMessageComponent } from '../../../components/send-message/send-message.component';
-import { JoinsComponent } from '../joins/joins.component';
 import { EventJoinCardComponent } from '../../../components/event-join-card/event-join-card.component';
 
 @Component({

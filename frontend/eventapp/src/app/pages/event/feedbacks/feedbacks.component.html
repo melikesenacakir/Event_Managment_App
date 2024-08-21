@@ -1,1 +1,52 @@
-<p>feedbacks works!</p>
+
+<div class="container">
+    <div class="title-container">
+        <svg xmlns="http://www.w3.org/2000/svg" (click)="onClick()" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z"/></svg>
+      <mat-form-field>
+        <mat-select > <!-- (selectionChange)="onEventChange($event)" -->
+          @for(event of events; track event){
+          <mat-option [value]="event.id">
+            {{ event.title }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <img src="/assets/feedback.png" alt="feedback" />
+    </div>
+    <ng-container >
+      <div class="inp">
+        <span class="material-icons">star</span>
+        <span class="material-icons">star</span>
+        <span class="material-icons">star</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z"/></svg>
+        <p>Stars</p>
+    </div>
+      <input matInput type="text" name="name"  disabled value="deneme" />
+      <div class="icons">
+      <span class="material-icons icon" style="color:#ECE6F0 ;">visibility</span>
+      </div>
+      <input matInput type="text" name="name"  disabled value="deneme" />
+      <div class="icons">
+        <span class="material-icons icon" style="color:#ECE6F0 ;">visibility</span>
+      </div>
+      <input matInput type="text" name="name"  disabled value="deneme" />
+      <div class="icons">
+        <span class="material-icons icon" style="color:#ECE6F0 ;">visibility</span>
+      </div>
+      <input matInput type="text" name="name"  disabled value="deneme" />
+      <div class="icons">
+        <span class="material-icons icon" style="color:#ECE6F0 ;">visibility</span>
+    </div>
+      <!-- <div class="icons">
+      <span class="material-icons icon1" style="color:#ECE6F0 ;">edit</span>
+      <span class="material-icons icon2" style="color:#ECE6F0 ;">delete</span>
+    </div> -->
+    </ng-container>
+  </div>
+  
+  <div class="button-container">
+    <mat-paginator aria-label="Select page" [hidePageSize]="isHidePageSize" [length]="userLength" [pageSize]="6"
+      (page)="navigatePage($event)">
+    </mat-paginator>
+  </div>

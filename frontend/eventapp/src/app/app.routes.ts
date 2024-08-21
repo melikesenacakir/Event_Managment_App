@@ -8,9 +8,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { EventComponent } from './pages/event/event.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { JoinComponent } from './components/event-card/join/join.component';
-import { EventJoinCardComponent } from './components/event-join-card/event-join-card.component';
 import { UserEventsComponent } from './pages/event/user-events/user-events.component';
-import { SendMessageComponent } from './components/send-message/send-message.component';
+import { FeedbacksComponent } from './pages/event/feedbacks/feedbacks.component';
+import { EventFilterComponent } from './components/event-filter/event-filter.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -20,10 +20,9 @@ export const routes: Routes = [
     {path: 'profile',component: ProfileComponent},
     {path: 'events',component: EventComponent},
     {path: 'events/:id',component: EventCardComponent},
-    {path: 'join',component: JoinComponent},
+    {path: 'join',component: JoinComponent}, //id ekle
+    {path: 'feedback',component: FeedbacksComponent},
     {path: 'myevents',component: UserEventsComponent},
-    {path: 'myevents/:id',component: EventCardComponent},
-    {path: 'myevents/:id/join',component: EventJoinCardComponent},
-    {path: 'myevents/:id/send',component: SendMessageComponent},
+    {path: 'filter',component: EventFilterComponent},
     {path: '**', component: NotFoundComponent } //iki yıldız içerisindeki hiçbir pathle eşleşmiyorsa demektir.
 ];
