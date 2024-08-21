@@ -11,5 +11,5 @@ export const Events: Event[] = [
     { "id": 8, "title": "Cybersecurity Forum", "description": "A forum on the latest in cybersecurity.", "date": "2024-09-15", "location": "Washington, D.C.", "image": "/assets/cybersecurity_forum.png", "quota": 120 },
     { "id": 9, "title": "SaaS Product Showcase", "description": "Showcasing the latest in SaaS products and innovations.", "date": "2021-10-05", "location": "Seattle, WA", "image": "/assets/saas_showcase.png", "quota": 80 },
     { "id": 10, "title": "Tech Career Fair", "description": "A career fair connecting tech talent with top companies.", "date": "2021-11-20", "location": "Boston, MA", "image": "/assets/career_fair.png", "quota": 500 },
-    { "id": 11, "title": "Design Thinking Workshop", "description": "A workshop on design thinking and innovation.", "date": "2025-07-01", "location": "Denver, CO", "image": "/assets/design_workshop.png", "quota": 50 }
+    { "id": 11, "title": "Design Thinking Workshop", "description": "A workshop on design thinking and innovation.", "date": "2025-06-01", "location": "Denver, CO", "image": "/assets/design_workshop.png", "quota": 50 }
 ];

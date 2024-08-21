@@ -14,7 +14,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class SendMessageComponent {
   messageForm: FormGroup;
-  constructor(private fb: FormBuilder,@Optional() public dialogRef: MatDialogRef<SendMessageComponent>,) {
+  constructor(private fb: FormBuilder,@Optional() public dialogRef: MatDialogRef<SendMessageComponent>) {
     this.messageForm = this.fb.group({
       message: ['']
     });

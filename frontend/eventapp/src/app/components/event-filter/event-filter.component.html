@@ -1,0 +1,15 @@
+<mat-grid-list cols="12">
+    <mat-grid-tile colspan="12" class="container" >
+        <form [formGroup]="filterForm" class="card">
+            <mat-radio-group aria-label="Select an option" class="events" formControlName="filter">
+                <div class="filter-div">
+                    <p>Filter</p>
+                    <hr>
+                </div>
+                <mat-radio-button class="event-button" value="all" (click)="select($event)" >All Events</mat-radio-button>
+                <mat-radio-button class="event-button" value="joined" (click)="select($event)" >Joined Events</mat-radio-button>
+                <mat-radio-button class="event-button" value="my" (click)="select($event)" >My Events</mat-radio-button>
+            </mat-radio-group>
+      </form>
+    </mat-grid-tile>
+</mat-grid-list>

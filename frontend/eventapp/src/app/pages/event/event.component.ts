@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {  Component } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../models/event';
