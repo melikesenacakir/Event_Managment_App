@@ -1,1 +1,35 @@
-<p>user-events works!</p>
+
+  <div class="container">
+      <div class="title-container">
+        <mat-form-field>
+          <mat-label>My Events</mat-label>
+          <mat-select (selectionChange)="onEventChange($event)">
+            @for(event of events; track event){
+            <mat-option [value]="event.id">
+              {{ event.title }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button class="img-btn" (click)="onClick()"><img src="/assets/announcements.png" alt="announcement" /></button>
+        <div class="join">
+          <button class="joinbtn">Add New Join</button>
+          <span class="material-icons" (click)="newJoin()">add</span>
+        </div>
+      </div>
+      <ng-container class="inp">
+        @for (attender of attenders; track attender) {
+        <input matInput type="text" name="name" id="attender.eventID" disabled [(ngModel)]="attender.userName" />
+        <div class="icons">
+        <span class="material-icons icon1" style="color:#ECE6F0 ;">edit</span>
+        <span class="material-icons icon2" style="color:#ECE6F0 ;">delete</span>
+      </div>
+        }
+      </ng-container>
+    </div>
+    
+    <div class="button-container">
+      <mat-paginator aria-label="Select page" [hidePageSize]="isHidePageSize" [length]="userLength" [pageSize]="6"
+        (page)="navigatePage($event)">
+      </mat-paginator>
+    </div>

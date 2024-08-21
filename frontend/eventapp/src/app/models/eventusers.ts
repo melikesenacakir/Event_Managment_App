@@ -1,12 +1,18 @@
-import { User } from "./user";
-
 export class EventUser{
     id: number;
-    event: Event;
-    users: User[];
-    constructor(id: number, event: Event, users: User[]){
+    eventID: number;
+    eventName: string;
+    userName: string;
+    userID : number;
+    userSurname: string;
+    quota: number;
+    constructor(id: number, event: string, userName: string, userSurname: string,eventID: number,quota: number, userID: number){
         this.id = id;
-        this.event = event;
-        this.users = users;
+        this.eventName = event;
+        this.userName = userName;
+        this.userSurname = userSurname;
+        this.eventID = eventID;
+        this.quota = quota;
+        this.userID = userID;
     }
 }

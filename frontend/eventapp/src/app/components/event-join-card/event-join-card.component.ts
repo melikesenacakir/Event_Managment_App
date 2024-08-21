@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIcon } from '@angular/material/icon';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event-join-card',
@@ -13,12 +14,16 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class EventJoinCardComponent {
  joinForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<EventJoinCardComponent>) {
     this.joinForm = this.fb.group({
       name: [''],
       surname: [''],
       email: [''],
       enrollment: ['',Validators.min(0)]
     });
+  }
+
+  close(){
+    this.dialogRef.close(true);
   }
 }

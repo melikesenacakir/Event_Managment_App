@@ -1,0 +1,164 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    width: 100%;
+    gap: 20px;
+}
+
+img{
+    width: 43px;
+    margin-top: 7px;
+}
+
+input {
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px #968d8d;
+    background-color: #2C2C2C;
+    padding: 15px;
+    border-style: outset;
+    font-size: medium;
+    width: 60%;
+    text-align: center;
+    color: #F5F5F5;
+    position: relative;
+}
+
+.inpbtn{
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+}
+
+.inp{
+    width: 100%;
+    height: 80px;
+    position: relative;//iconlar için parentı relative kendisi absolute olmalı yoksa üstüste gelmiyor!!!
+    left: 10px;
+    margin-top: 7px;
+    height: 100px;
+}
+.join{
+  width: 30%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  left: 10px;
+  margin-top: 7px;
+  justify-content: space-between;
+  align-items: center;
+  span{
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    margin-right: 10px;
+    z-index: 2;
+    background-color: transparent;
+  }
+}
+mat-paginator{
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-btn{
+    cursor: pointer;
+    z-index: 2;
+    background-color: transparent;
+    border: none;
+}
+
+.joinbtn{
+    border-radius: 30px;
+    background-color: #1d1b2035;
+    color: black;
+    border-style: none;
+    box-shadow: 0 3px #666;
+    height: 65%;
+    width: 100%;
+}
+
+.icon1{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  right: 27%;
+  margin-bottom: 50px;
+}
+.icon2{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  right: 23%;
+  margin-bottom: 50px;
+}
+.icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-form-field{
+  margin-top: 30px;
+  width: 30%;
+}
+
+
+::ng-deep .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
+  border-radius: 50px!important;
+  box-shadow: 0 3px #666;
+} 
+
+.mat-mdc-paginator{
+  border-radius: 20px;
+  background-color:azure;
+}
+
+@media only screen and (min-width:0px) and (max-width: 550px) {
+  mat-form-field{
+    width: 47%;
+  }
+  .icon1{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    right: 29%;
+    margin-bottom: 50px;
+  }
+}

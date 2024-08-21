@@ -1,7 +1,7 @@
 <mat-grid-list cols="12">
     <mat-grid-tile colspan="12" class="container" >
         <form [formGroup]="joinForm" class="card">
-        <button matSuffix mat-icon-button class="close"><span class="material-icons">cancel</span></button> 
+        <button matSuffix mat-icon-button class="close"><span class="material-icons" (click)="close()">cancel</span></button> 
           <div>
             <label for="name" class="user-label">Name</label>
             <input type="text" id="name" formControlName="name" name="name">

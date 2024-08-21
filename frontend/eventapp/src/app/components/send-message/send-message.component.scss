@@ -40,7 +40,7 @@ input,.user-label{
 }
 
 .container{
-    height: 110vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,10 +51,10 @@ input,.user-label{
     border-radius: 10px;
     display: block;
     min-width: 80px;
-    min-height: 120px;
+   // min-height: 120px;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+     padding: 20px;
 }
 input{
     border-radius: 10px;
@@ -70,15 +70,15 @@ input{
 }
 @media only screen and (min-width: 801px) {
   .card { 
-      width: 630px; 
-      height: fit-content; 
+      width: 530px; 
+      //height: fit-content;
   }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 800px) {
   .card{
       padding: 5%; 
-      width: 70%;
+      width: 80%;
       height: fit-content;
   }
 }
