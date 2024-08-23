@@ -1,0 +1,32 @@
+<mat-grid-list cols="12">
+    <mat-grid-tile colspan="12" class="container">
+        <form [formGroup]="eventForm" class="card">
+        <div *ngFor="let event of events;">
+          <div class="profile">
+            <img src="/assets/profile.png" alt="profile">
+            <div class="titles">
+              <p class="title">{{event.title}}</p>
+              <p class="quota">Kontejan {{event.quota}} kişidir</p>
+            </div>
+            <button matSuffix mat-icon-button class="close" (click)="onClose()"><span class="material-icons">close</span></button> 
+          </div>
+            <img [src]="event.image" alt="event image" class="event-image">
+            <div class="icon-text">
+                <span class="material-icons">event</span>
+                <p>{{event.date}}</p>
+            </div>
+            <div class="icon-text">
+                <span class="material-icons">place</span>
+                <p>{{event.location}}</p>
+            </div>
+            <div class="desc">
+                <p>{{event.description}}</p>
+            </div>
+            
+        <div>
+          <button type="submit" class="btn1" (click)="edit()">{{action}}</button>
+        </div>
+      </div>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>

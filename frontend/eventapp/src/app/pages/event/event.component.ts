@@ -10,12 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogRef , MatDialogModule} from '@angular/material/dialog';
 import { EventCardComponent } from '../../components/event-card/event-card.component';
+import { Router, RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [CommonModule, MatPaginatorModule, FormsModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatIconModule],
+  imports: [CommonModule, MatPaginatorModule, FormsModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatIconModule,RouterOutlet],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss',
 })
@@ -45,7 +46,8 @@ export class EventComponent {
 
 
   constructor(private eventService: EventsService,
-    private dialogRef: MatDialog
+    private dialogRef: MatDialog,
+    private router: Router
   ) {
     this.events = [];
   }
@@ -129,11 +131,11 @@ export class EventComponent {
   }
  
   onClick(event : Event): void {
-    this.dialogRef.open(EventCardComponent, {
+  const inp= this.dialogRef.open(EventCardComponent, {
       width: '30vw',
       height: '80vh',
       data: { event: event }
     });
-     
+    inp.componentInstance.event = event;
   }
 }

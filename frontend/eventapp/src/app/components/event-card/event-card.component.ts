@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Host, HostBinding, HostListener, Inject, Optional, Output } from '@angular/core';
+import { Component, EventEmitter, Host, HostBinding, HostListener, Inject, Input, Optional, Output, TemplateRef, ViewChild } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/event';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
@@ -18,11 +18,13 @@ import { JoinComponent } from './join/join.component';
 export class EventCardComponent {
   events: Event[];
   eventForm: FormGroup;
+  @Input() event: Event;
+  @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<any>;
 
   constructor(private eventService: EventsService,
      private fb: FormBuilder,
      @Optional() public dialogRef: MatDialogRef<EventCardComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: { event: Event },
+    // @Inject(MAT_DIALOG_DATA) public data: { event: Event },
      private router: Router) {
     this.events = [];
     this.eventForm = this.fb.group({
@@ -41,14 +43,15 @@ export class EventCardComponent {
   }
 
   ngOnInit(): void {
-      this.getEvent(this.data?.event);
+    console.log(this.event);
+      this.getEvent(this.event);
   }
 
   getEvent(event: Event): void {
     this.events.push(event);
   }
   join(): void{
-      this.dialogRef.close(true);
+      this.dialogRef.close();
       this.router.navigate(['/join']);
   }
   
