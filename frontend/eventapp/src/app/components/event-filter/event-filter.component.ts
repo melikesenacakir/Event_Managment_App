@@ -19,7 +19,6 @@ export class EventFilterComponent {
     this.filterForm = this.fb.group({
       filter: ['']
     });
-    
   }
 
   select(event: any){

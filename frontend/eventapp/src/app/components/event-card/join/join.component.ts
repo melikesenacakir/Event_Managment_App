@@ -17,6 +17,7 @@ export class JoinComponent {
   joinForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
+    debugger;
     this.joinForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
