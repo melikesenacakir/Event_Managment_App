@@ -12,6 +12,8 @@ import { UserEventsComponent } from './pages/event/user-events/user-events.compo
 import { FeedbacksComponent } from './pages/event/feedbacks/feedbacks.component';
 import { EventFilterComponent } from './components/event-filter/event-filter.component';
 import { OrganizationComponent } from './pages/event/organization/organization.component';
+import { AppComponent } from './app.component';
+import { MainEventComponent } from './pages/event/main-event/main-event.component';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -19,9 +21,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'forgetpass', component: ForgetpasswordComponent},
     {path: 'profile',component: ProfileComponent},
-    {path: 'events',component: EventComponent},
-   // {path: 'events',component: EventComponent, children: [{path: 'join', component: JoinComponent}]},
-    {path: 'join',component: JoinComponent}, //id ekle
+    {path: 'events',component: MainEventComponent, children: [{path: 'join', component: JoinComponent},{path: '',component:EventComponent},{path: '',pathMatch: 'full',redirectTo: 'events'}]},
     {path: 'feedback',component: FeedbacksComponent},
     {path: 'myevents',component: UserEventsComponent},
     {path: 'filter',component: EventFilterComponent},

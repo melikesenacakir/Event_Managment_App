@@ -52,7 +52,7 @@ export class EventCardComponent {
   }
   join(): void{
       this.dialogRef.close();
-      this.router.navigate(['/join']);
+      this.router.navigate(['/events/join']);
   }
   
 }
