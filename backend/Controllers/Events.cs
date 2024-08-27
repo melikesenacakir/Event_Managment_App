@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using backend.Database;
 using backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
@@ -20,21 +21,21 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetEvents(){
+        public async Task<IActionResult> GetEvents(){
             return Ok(_db.Events.Select(x=>x.ToEventsDTO()).ToList());
         }
 
         [HttpGet("{event_id}")] //returns events by id
-        public IActionResult GetEvent([FromRoute]int event_id){
-            var events=_db.Events.Find(event_id); //searches via primary key
+        public async Task<IActionResult> GetEvent([FromRoute]int event_id){
+            var events= await _db.Events.FindAsync(event_id); //searches via primary key
             if(events==null){
                 return NotFound();
             }
             return Ok(events.ToEventsDTO());
         }
         [HttpGet("user/{user_id}")]
-        public IActionResult GetUserEvents([FromRoute]Guid user_id){ //get events that user created
-            var events=_db.Events.Where(x=>x.Created_by==user_id).ToList();
+        public async Task<IActionResult> GetUserEvents([FromRoute]Guid user_id){ //get events that user created
+            var events=await _db.Events.Where(x=>x.Created_by==user_id).ToListAsync();
             if(events==null){
                 return NotFound();
             }
@@ -42,8 +43,8 @@ namespace backend.Controllers
         }
 
         [HttpGet("attended/{id}")]
-        public IActionResult AttendedEvents([FromRoute]Guid id){ //get users that attended events //burdaki id sonradan session ya da jwtden alınacaktır
-            var events=_db.User_Events.Where(x=>x.User_id==id).ToList();
+        public async Task<IActionResult> AttendedEvents([FromRoute]Guid id){ //get users that attended events //burdaki id sonradan session ya da jwtden alınacaktır
+            var events=await _db.User_Events.Where(x=>x.User_id==id).ToListAsync();
             if(events==null){
                 return NotFound();
             }

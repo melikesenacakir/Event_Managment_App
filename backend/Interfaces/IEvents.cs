@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace backend.Interfaces
 {
-    public interface IEvents
+    public interface IEventsRepository
+    {
+        
+    }
+    public interface IEventsService
     {
         
     }
