@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Interfaces;
 
 namespace backend.Services
 {
-    public class Message: Interfaces.IMessages
+    public class Message: IMessagesService
     {
         
     }

@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace backend.Interfaces
 {
-    public interface IMessages
+    public interface IMessagesRepository
+    {
+        
+    }
+    public interface IMessagesService
     {
         
     }

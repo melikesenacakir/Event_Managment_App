@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace backend.Interfaces
 {
-    public interface IFeedback
+    public interface IFeedbackRepository
+    {
+        
+    }
+    public interface IFeedbackService
     {
         
     }
