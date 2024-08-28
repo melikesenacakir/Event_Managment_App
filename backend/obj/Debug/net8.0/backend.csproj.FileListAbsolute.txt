@@ -137,3 +137,5 @@ C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\bin\Debug\net8.0\ru
 C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\bin\Debug\net8.0\backend.xml
+C:\Users\Melike\Documents\GitHub\Event_Managment_App\backend\obj\Debug\net8.0\backend.xml

@@ -26,4 +26,10 @@ namespace backend.Models
 
         public Users? Users { get; set; }
     }
+
+    [NotMapped]
+    public class Created_Events{
+        public Events? Events { get; set; }
+        public Users? Users { get; set; }
+    }
 }

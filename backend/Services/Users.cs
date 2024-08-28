@@ -10,7 +10,6 @@ namespace backend.Services
     public class UserServices: IUsersService
     {
         private readonly IUsersRepository _usersRepo;
-         ServiceResponse<Models.Users> _response = new();
         public UserServices(IUsersRepository usersRepo)
         {
             _usersRepo = usersRepo;
@@ -56,52 +55,6 @@ namespace backend.Services
             });
         }
 
-        public async Task<ServiceResponse<Models.Users>> LoginAsync(Models.Users user)
-        {
-           var userData= await _usersRepo.FilterUser(user.Username);
-           if (userData==null)
-           {
-               return await Task.FromResult(new ServiceResponse<Models.Users>(){
-                   Success=false,
-                   Data=null,
-                   Message="username or password does not match",
-               });
-           }
-           var result = BCrypt.Net.BCrypt.Verify(user.Password,userData?.Password);
-              if (result.Equals(false))
-              {
-                    return await Task.FromResult(new ServiceResponse<Models.Users>()
-                    {
-                        Success = false,
-                        Data = null,
-                        Message = "username or password does not match"
-                    });
-              };
-
-              return await Task.FromResult(new ServiceResponse<Models.Users>(){
-                Success = true,
-                Data=null,
-                Message="Login Successful",
-              });
-        }
-
-        public async Task<ServiceResponse<Models.Users>> RegisterAsync(Models.Users user)
-        {
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            var result = await _usersRepo.Register(user);
-            if (result==null){
-                return await Task.FromResult(new ServiceResponse<Models.Users>(){
-                    Success=false,
-                    Data=null,
-                    Message="username already exists",
-                });
-            }
-            return await Task.FromResult(new ServiceResponse<Models.Users>(){
-                Success=true,
-                Data=result,
-                Message="User registered successfully",
-            });
-        }
 
         public async Task<ServiceResponse<Models.Users?>?> UpdateUserAsync(Guid id, Models.Users update,string confirmPassword)
         {
