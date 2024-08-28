@@ -17,34 +17,13 @@ namespace backend.Controllers
     {
        // private readonly IUsersRepository _usersRepo;
         private readonly IUsersService _usersService;
-        public Users(ApplicationDB db, IUsersRepository usersRepo, IUsersService usersService)
+        public Users(IUsersService usersService)
         {
            // _usersRepo = usersRepo;
             _usersService = usersService;
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDTO usersdto)
-        {
-            var users=usersdto.FromLoginDTO();
-            var login = await _usersService.LoginAsync(users); //password hashlenecek ve bu serviste yapılacak
-            if (!login.Success)
-            {
-                return NotFound(login.Message);
-            }
-            return Ok(login.Message);
-        }
-
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDTO usersdto)
-        {
-            var users=usersdto.FromRegisterDTO();
-            var register = await _usersService.RegisterAsync(users);
-            if (!register.Success){
-                    return NotFound(register.Message);
-            }
-            return Ok(register.Message);
-        }
+        
 
 
         [HttpGet("{user_id}")]

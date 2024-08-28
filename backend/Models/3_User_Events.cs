@@ -20,10 +20,11 @@ namespace backend.Models
         public Events? Events { get; set; }
 
         [NotMapped]
-        public string Event_Name { get; set; } = string.Empty;
-        [NotMapped]
         public string User_Name { get; set; } = string.Empty;
+        [NotMapped]
+        public Events Event { get; set; }
 
 
     }
+
 }
