@@ -6,13 +6,15 @@ using backend.Database;
 using backend.DTOs;
 using backend.Interfaces;
 using backend.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [ApiController]
-    [Route("api/users")]
+    [Route("api/private/users")]
     public class Users : ControllerBase
     {
        // private readonly IUsersRepository _usersRepo;

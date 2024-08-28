@@ -8,13 +8,15 @@ using backend.DTOs;
 using backend.Interfaces;
 using backend.Mappers;
 using backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
+    [Authorize]
     [ApiController]
-    [Route("api/events")]
+    [Route("api/private/events")]
 
     public class Events : ControllerBase
     {
