@@ -39,7 +39,7 @@ namespace backend.Services
 
               return await Task.FromResult(new ServiceResponse<Models.Users>(){
                 Success = true,
-                Data=null,
+                Data=userData,
                 Message="Login Successful",
               });
         }
