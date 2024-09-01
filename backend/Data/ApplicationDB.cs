@@ -18,5 +18,6 @@ namespace backend.Database
         public DbSet<Models.Messages> Messages { get; set; }
         public DbSet<Models.Questions> Questions { get; set; }
         public DbSet<Models.Answers> Answers { get; set; }
+
     }
 }

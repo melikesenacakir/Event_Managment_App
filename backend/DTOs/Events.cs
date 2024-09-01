@@ -96,7 +96,7 @@ namespace backend.DTOs
         public int Event_id { get; set; } 
         
         [JsonPropertyName("users")]
-        public UsersDTO User { get; set; }
+        public List<UsersDTO> User { get; set; }
 
         
     }

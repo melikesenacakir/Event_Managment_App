@@ -32,4 +32,12 @@ namespace backend.Models
         public Events? Events { get; set; }
         public Users? Users { get; set; }
     }
+     [NotMapped]
+     public class Joined_Events{
+        public required string User_Name { get; set; }
+        public required string Surname { get; set; }
+        public required string Email { get; set; }
+        public required int Enrollment { get; set; }
+     }
+
 }
