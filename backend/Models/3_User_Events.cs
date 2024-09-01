@@ -16,7 +16,7 @@ namespace backend.Models
         [ForeignKey("Events")]
         public int Event_id { get; set; }
 
-        public Users? Users { get; set; }
+        public Users Users { get; set; }
         public Events? Events { get; set; }
 
         [NotMapped]

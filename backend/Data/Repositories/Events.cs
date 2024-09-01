@@ -80,5 +80,107 @@ namespace backend.Repositories
             _db.SaveChanges();
             return await _db.Events.ToListAsync();
         }
+
+        public async Task<List<User_Events>> GetEventsCreatedByUser(Guid id)
+        {
+            var userEventsList=new List<User_Events>();
+            var q1 = await _db.Events
+                      .Include(x=>x.Users)
+                      .Where(x => x.Created_by==id ).ToListAsync(); //bununla inner join oluyor
+                      
+
+            for (int i = 0; i < q1.Count; i++)
+            {
+                var newUserEvents=q1[i];
+                var newEvent=new Events{
+                    Title=newUserEvents.Title,
+                    Description=newUserEvents.Description,
+                    Date=newUserEvents.Date,
+                    Time=newUserEvents.Time,
+                    Location=newUserEvents.Location,
+                    Image=newUserEvents.Image,
+                    Quoata=newUserEvents.Quoata
+                };
+                var userEvents=new User_Events{
+                    Event=newEvent,
+                    User_Name=newUserEvents.Users.Name,
+                };
+                userEventsList.Add(userEvents);
+            }
+            return userEventsList;
+        }
+
+        public async Task<List<User_Events?>> GetEventsByUserParticipated(int id)
+        {
+            var q1 = await _db.User_Events
+                            .Include(x => x.Users)
+                            .Where(x => x.Event_id == id && x.User_id == x.Users.ID)
+                            .ToListAsync();
+            var events = await _db.Events
+                            .Where(x => x.ID == id)
+                            .ToListAsync();
+
+            var userEventsList = new List<User_Events?>();
+            if (q1.Count > 0 && events.Count > 0)
+            {
+                foreach (var userEvent in q1)
+                {
+                    var newUserEvents = new User_Events
+                    {
+                        Event_id = userEvent.Event_id,
+                        Event = events[0],
+                        Users = userEvent.Users,
+                    };
+                    userEventsList.Add(newUserEvents);
+                }
+            }
+
+            return userEventsList;
+        }
+        public async Task<List<User_Events>?> ParticipateEvent(int id, Joined_Events joined)
+        {
+            if (joined.Email == null || joined.User_Name == null || joined.Surname == null || joined.Enrollment == 0)
+            {
+                return null;
+            }
+            var user_id = await _db.Users
+                                .Where(x => x.Email == joined.Email)
+                                .Select(x => x.ID)
+                                .FirstOrDefaultAsync();
+            if (user_id == Guid.Empty)
+            {
+                return null;
+            }
+
+            var newUserEvent = new User_Events
+            {
+                Event_id = id,
+                User_id = user_id,
+            };
+
+            var events = await _db.Events
+                                .Where(x => x.ID == id)
+                                .ToListAsync();
+            if (events.Count == 0)
+            {
+                return null;
+            }
+
+            var eventToUpdate = events[0];
+            if (int.TryParse(eventToUpdate.Quoata, out int currentQuota))
+            {
+                eventToUpdate.Quoata = (currentQuota - joined.Enrollment).ToString();
+            }
+            else
+            {
+                Console.WriteLine("Invalid Quoata value.");
+                return null;
+            }
+
+            await _db.User_Events.AddAsync(newUserEvent);
+            _db.Events.Update(eventToUpdate); 
+            await _db.SaveChangesAsync();
+            return new List<User_Events> { newUserEvent };
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace backend.Mappers
 {
     public static class EventsMapper
     {
+
         public static EventsDTO ToEventsDTO(this Models.Events events){
             return new EventsDTO{
                 ID=events.ID,
@@ -92,5 +93,36 @@ namespace backend.Mappers
                 Quoata=events.Quoata,
             };
         }
-    }
+       public static AttendedEventsDTO ToAttendedEventsDTO(this List<Models.User_Events> userEventsList){
+            var usersList = new List<UsersDTO>();
+
+            foreach (var userEvent in userEventsList)
+            {
+                
+                var newUser = userEvent.Users.ToUsersDTO();
+                Console.WriteLine(newUser.Name);
+                usersList.Add(newUser);
+            }
+                var attendedEvent = new AttendedEventsDTO
+                {
+                    Event_title = userEventsList[0].Event.Title,
+                    Event_id = userEventsList[0].Event.ID,
+                    User = usersList,
+                };
+                return attendedEvent;
+            }
+    public static List<UserEventsDTO> ToUserCreatedEventsDTO(this List<Models.User_Events> userEvents){
+                var user_events=new List<UserEventsDTO>();
+                foreach (var events in userEvents)
+                {
+                    var newEvents = events.Event.ToEventDTO();
+                    user_events.Add(new UserEventsDTO {
+                        User_name=events.User_Name,
+                        Event=newEvents
+                    });
+                }
+                return user_events;
+           
+            }
+        }
 }

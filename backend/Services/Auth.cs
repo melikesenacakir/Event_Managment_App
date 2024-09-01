@@ -46,7 +46,16 @@ namespace backend.Services
 
         public async Task<ServiceResponse<Models.Users>> RegisterAsync(Models.Users user)
         {
+            if (user.Email=="" || user.Password=="" || user.Username=="" || user.Name=="" || user.Surname=="")
+            {
+                return await Task.FromResult(new ServiceResponse<Models.Users>(){
+                    Success=false,
+                    Data=null,
+                    Message="Registeration failed",
+                });
+            }
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Role="user";
             var result = await _authRepo.Register(user);
             if (result==null){
                 return await Task.FromResult(new ServiceResponse<Models.Users>(){
