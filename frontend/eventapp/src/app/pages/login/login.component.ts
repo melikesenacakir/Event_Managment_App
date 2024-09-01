@@ -42,7 +42,11 @@ export class LoginComponent {
     
   }
   onClick() : void {
-
-  }
+     if (this.isFormEmpty()) {
+       this.loginError = 'Username and password are required';
+       return;
+    }
+    
+}
   
 }

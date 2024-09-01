@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Users } from '../datasources/users.datasource';
-import { Observable,of } from 'rxjs';
+import { map, Observable,of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor() { }
+  private url = 'http://localhost:5214/api/private/users';
+
+  constructor(private http: HttpClient) { }
 
   getUsers():Observable<User[]>{
-    return of(Users); 
+    return this.http.get<any>(this.url).pipe(
+      map(response => response.$values as User[])
+    ); 
   }
 
   getUser(id: number):Observable<User | undefined>{

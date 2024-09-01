@@ -43,8 +43,8 @@ export class EventCardComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.event);
-      this.getEvent(this.event);
+    console.log("burası dialog",this.event);
+    this.getEvent(this.event);
   }
 
   getEvent(event: Event): void {

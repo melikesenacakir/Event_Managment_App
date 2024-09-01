@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogRef , MatDialogModule} from '@angular/material/dialog';
 import { EventCardComponent } from '../../components/event-card/event-card.component';
 import { Router, RouterOutlet } from '@angular/router';
+import { firstValueFrom, Observable } from 'rxjs';
 
 
 @Component({
@@ -22,6 +23,7 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class EventComponent {
   events: Event[];
+  event: Event; 
   eventsPerPage: number = 5
   selectedPage: number = 1;
   eventLength: number = 0;
@@ -70,13 +72,15 @@ export class EventComponent {
       });
   }
 
-  getEvent(id: number): void {
-    this.eventService.getEvent(id)
-      .subscribe(event => {
-        if (event) {
-          this.events.push(event);
-        }
-      });
+  async getEvent(id: number): Promise<void> {
+    try {
+      const event = await firstValueFrom(this.eventService.getEvent(id));
+      if (event) {
+        this.event = event;
+      }
+    } catch (error) {
+      console.error("Error fetching event:", error);
+    }
   }
 
   deleteEvent(event: Event): void {
@@ -111,7 +115,6 @@ export class EventComponent {
   }
 
   onEventChange(event: any): void {
-    console.log(event.value);
     const selected = event.value;
     this.eventService.getEvents()
       .subscribe(events => {
@@ -130,12 +133,13 @@ export class EventComponent {
     }
   }
  
-  onClick(event : Event): void {
-  const inp= this.dialogRef.open(EventCardComponent, {
-      width: '30vw',
-      height: '80vh',
-      data: { event: event }
-    });
-    inp.componentInstance.event = event;
+  async onClick(id: number): Promise<void> {
+    await this.getEvent(id);
+     const inp= this.dialogRef.open(EventCardComponent, {
+        width: '30vw',
+        height: '80vh',
+        data: { event: this.event }
+      });
+      inp.componentInstance.event = this.event;
   }
 }

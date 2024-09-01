@@ -18,7 +18,7 @@
         height: 100px;
         position: relative;">
         <input matInput type="text" id="event.id" name="name" disabled class="inp-right" [(ngModel)]="event.title" />
-        <button matSuffix mat-icon-button class="icon-right" (click)="onClick(event)"><mat-icon>keyboard_double_arrow_right</mat-icon></button>
+        <button matSuffix mat-icon-button class="icon-right" (click)="onClick(event.id)"><mat-icon>keyboard_double_arrow_right</mat-icon></button>
       </div>
       }
       @else{
@@ -26,7 +26,7 @@
       height: 100px;
       position: relative;">
         <input matInput type="text" id="event.id" name="name" disabled class="inp-left" [(ngModel)]="event.title" />
-        <button matSuffix mat-icon-button class="icon-left" (click)="onClick(event)"><mat-icon>keyboard_double_arrow_left</mat-icon></button>
+        <button matSuffix mat-icon-button class="icon-left" (click)="onClick(event.id)"><mat-icon>keyboard_double_arrow_left</mat-icon></button>
       </div>
       }
     </ng-container>

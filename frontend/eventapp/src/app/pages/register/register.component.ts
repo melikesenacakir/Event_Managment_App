@@ -5,11 +5,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {NavbarComponent } from '../../components/navbar/navbar.component';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
+import { MatDialogRef, MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../components/popup/popup.component';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,MatRadioModule,MatGridListModule,NavbarComponent],
+  imports: [CommonModule,ReactiveFormsModule,MatRadioModule,MatGridListModule,NavbarComponent,MatDialogModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -18,7 +22,7 @@ export class RegisterComponent {
   registerError: string = '';
   @Input() register: boolean=true;
   
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService,public dialogRef: MatDialog) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required], 
       surname: ['', Validators.required],
@@ -43,8 +47,18 @@ export class RegisterComponent {
     }
     
   }
-  onClick() : void {
-    //this.registerForm
-
+  async onClick() : Promise<void> {
+    if(this.isFormEmpty()){
+      console.log('Username and password are required');
+    }
+    var message=await this.authService.register(this.registerForm.value);
+    if (message!=''){
+      const inp= this.dialogRef.open(PopupComponent, {
+        width: '30vw',
+        height: '20vh',
+      });
+      inp.componentInstance.message = message;
+    }
+    
   }
 }
