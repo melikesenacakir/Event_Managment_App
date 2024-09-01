@@ -124,5 +124,14 @@ namespace backend.Mappers
                 return user_events;
            
             }
+        public static List<EventDTO> ToHomepageDTO(this List<Models.Events> users){
+            var events = new List<EventDTO>();
+            foreach (var user in users)
+            {
+                var newEvent = user.ToEventDTO();
+                events.Add(newEvent);
+            }
+            return events;
         }
-}
+   }
+ }

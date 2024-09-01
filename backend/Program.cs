@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json.Serialization;
+using backend.Data.Repositories;
 using backend.Database;
 using backend.Interfaces;
 using backend.Models;
@@ -33,6 +34,8 @@ builder.Services.AddScoped<IAuthService, AuthServices>();
 builder.Services.AddScoped<IEventsRepository, EventsRepository>();
 builder.Services.AddScoped<IEventsService, EventsServices>();
 builder.Services.AddScoped<IMiddlewareService, Middleware>();
+builder.Services.AddScoped<IHomepageRepository, HomepageRepository>();
+builder.Services.AddScoped<IHomepageService, HomepageService>();
 
 builder.Services.AddCors(options=>
      options.AddDefaultPolicy(builder =>
