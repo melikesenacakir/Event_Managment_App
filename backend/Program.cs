@@ -8,6 +8,7 @@ using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -23,6 +24,7 @@ builder.Services.AddControllers()
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
                 options.JsonSerializerOptions.WriteIndented = true;
+                options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
             });
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
@@ -31,6 +33,11 @@ builder.Services.AddScoped<IAuthService, AuthServices>();
 builder.Services.AddScoped<IEventsRepository, EventsRepository>();
 builder.Services.AddScoped<IEventsService, EventsServices>();
 builder.Services.AddScoped<IMiddlewareService, Middleware>();
+
+builder.Services.AddCors(options=>
+     options.AddDefaultPolicy(builder =>
+     builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
 
 builder.Services.AddAuthentication(options=>{
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -67,7 +74,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers(); //https redirect error verir eklemezsek

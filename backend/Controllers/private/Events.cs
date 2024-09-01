@@ -7,6 +7,7 @@ using backend.Database;
 using backend.DTOs;
 using backend.Interfaces;
 using backend.Mappers;
+using backend.Models;
 using backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [ApiController]
     [Route("api/private/events")]
 
@@ -33,7 +34,6 @@ namespace backend.Controllers
             if(events==null){
                 return NotFound(events?.Message);
             }
-            
             return Ok(events.Data?.GetEventsDTO());
         }
 
@@ -46,25 +46,6 @@ namespace backend.Controllers
             }
             return Ok(events.Data?.ToUserEventsDTO());
         }
-       /*  [HttpGet("user/{user_id}")]
-        public async Task<IActionResult> GetUserEvents([FromRoute]Guid user_id){ //get events that user created
-            var events=await _db.Events.Where(x=>x.Created_by==user_id).ToListAsync();
-            var users=await _db.Users.Where(x=>x.ID==user_id).ToListAsync();
-            if(events==null){
-                return NotFound();
-            }
-            return Ok(events.Select(x=>x.ToEventsDTO(users.FirstOrDefault()!)).ToList());
-        }
- */
-       /*  [HttpGet("attended/{id}")]
-        public async Task<IActionResult> AttendedEvents([FromRoute]Guid id){ //get users that attended events //burdaki id sonradan session ya da jwtden alınacaktır
-            var events=await _db.User_Events.Where(x=>x.User_id==id).ToListAsync();
-            if(events==null){
-                return NotFound();
-            }
-            return Ok(events.Select(x=>x.ToUserEventsDTO()).ToList());
-        } */
-
 
         /// <summary>Creates an event </summary>
         [HttpPost("{user_id}")]
@@ -82,6 +63,31 @@ namespace backend.Controllers
                 return NotFound(update.Message);
             }
             return Ok(update.Message);
+        }
+
+           [HttpGet("user/{user_id}")]
+        public async Task<IActionResult> GetUserEvents([FromRoute]Guid user_id){ //get events that user created
+            var events=await _eventsService.GetEventsCreatedByUserAsync(user_id);
+            if(events.Data==null){
+                return NotFound(events.Message);
+            }
+            return Ok(events.Data?.ToUserCreatedEventsDTO());
+           
+        }
+        
+        [HttpGet("attended/{id}")]
+        public async Task<IActionResult> AttendedEvents([FromRoute]int id){ //get users that attended events //burdaki id sonradan session ya da jwtden alınacaktır
+            var events=await _eventsService.GetEventsByUserParticipatedAsync(id);
+            if(events.Data==null){
+                return NotFound(events.Message);
+            }
+            return Ok(events.Data?.ToAttendedEventsDTO());
+        }
+
+        [HttpPost("participate/{event_id}")]
+        public async Task<IActionResult> ParticipateEvent([FromRoute]int event_id,[FromBody] Joined_Events joined_Events){
+            var participate=await _eventsService.ParticipateEventAsync(event_id,joined_Events);
+            return Ok(participate.Message);
         }
     }
 }
