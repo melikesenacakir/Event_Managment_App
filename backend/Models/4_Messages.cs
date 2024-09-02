@@ -13,7 +13,7 @@ namespace backend.Models
         public DateTime Created_at { get; set; } = DateTime.Now;
 
         [ForeignKey("Users")]
-        public Guid Created_by { get; set; }
+        public Guid Craeted_by { get; set; }
 
         [ForeignKey("Event")]
         public int Event_id { get; set; }

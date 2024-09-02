@@ -17,7 +17,14 @@ namespace backend.Models
         [ForeignKey("Events")]
         public int Event_id { get; set; }
 
-        public ICollection<Questions>? Questions { get; set; }
+        //public ICollection<Questions>? Questions { get; set; }
+        public string Feedback { get; set; } = string.Empty;
+
+        [NotMapped]
+        public string User_name { get; set; } = string.Empty;
+
+        [NotMapped]
+        public string Event_title { get; set; } = string.Empty;
 
         public Users? Users { get; set; }
         public Events? Events { get; set; }

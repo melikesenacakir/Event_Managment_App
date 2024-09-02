@@ -16,7 +16,8 @@ namespace backend.DTOs
         [JsonPropertyName("event_id")]
         public int Event_id { get; set; }
         [JsonPropertyName("feedback")]
-        public List<QuestionDTO> Questions { get; set; } = [];
+       // public List<QuestionDTO> Questions { get; set; } = [];
+        public string Feedback { get; set; } = string.Empty;
     }
     public class QuestionDTO{
         [JsonPropertyName("id")]
@@ -33,6 +34,10 @@ namespace backend.DTOs
         public int ID { get; set; }
         [JsonPropertyName("content")]
         public string Content { get; set; }=string.Empty;
+    }
 
+    public class CreateFeedbackDTO{
+        [JsonPropertyName("feedback")]
+        public string Feedback { get; set; } = string.Empty;
     }
 }

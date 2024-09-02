@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace backend.DTOs
 {
-    public class MessagesDTO //creates new message
+    public class MessagesDTO
     {
+        [JsonPropertyName("id")]
+        public int ID { get; set; }
+
         [JsonPropertyName("content")]
         public string Content { get; set; } = string.Empty;
         [JsonPropertyName("created_by")]
@@ -15,7 +18,7 @@ namespace backend.DTOs
         [JsonPropertyName("created_at")]
         public string Created_at { get; set; } = string.Empty;
         [JsonPropertyName("event_id")]
-        public string Event_id { get; set; } = string.Empty;
+        public int Event_id { get; set; } 
     }
     public class MessageDTO // send message to user
     {
@@ -28,6 +31,12 @@ namespace backend.DTOs
         [JsonPropertyName("created_at")]
         public string Created_at { get; set; } = string.Empty;
         [JsonPropertyName("event_id")]
-        public string Event_Name { get; set; } = string.Empty;
+        public int Event_id { get; set; }
+    }
+
+    public class CreateMessagesDTO //creates new message
+    {  
+        [JsonPropertyName("content")]
+        public string Content { get; set; } = string.Empty;
     }
 }
