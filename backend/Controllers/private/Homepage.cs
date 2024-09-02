@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/homepage")]
+    [Route("api/private/homepage")]
     public class Homepage : ControllerBase
     {
         private readonly IHomepageService _homeService;

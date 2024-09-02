@@ -36,6 +36,10 @@ builder.Services.AddScoped<IEventsService, EventsServices>();
 builder.Services.AddScoped<IMiddlewareService, Middleware>();
 builder.Services.AddScoped<IHomepageRepository, HomepageRepository>();
 builder.Services.AddScoped<IHomepageService, HomepageService>();
+builder.Services.AddScoped<IMessagesRepository, MessageRepository>();
+builder.Services.AddScoped<IMessagesService, Message>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbacksRepository>();
+builder.Services.AddScoped<IFeedbackService, backend.Services.Feedbacks>();
 
 builder.Services.AddCors(options=>
      options.AddDefaultPolicy(builder =>
