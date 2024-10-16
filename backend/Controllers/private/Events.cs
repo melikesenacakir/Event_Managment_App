@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers
 {
-   // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/private/events")]
 

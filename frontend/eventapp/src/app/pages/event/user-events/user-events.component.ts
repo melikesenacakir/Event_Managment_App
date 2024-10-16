@@ -102,9 +102,11 @@ export class UserEventsComponent {
     });
   }
   newJoin(): void {
-    this.dialogRef.open(EventJoinCardComponent, {
+    var inp=this.dialogRef.open(EventJoinCardComponent, {
       width: '35vw',
       height: '80vh'
     });
+    inp.componentInstance.eventId = this.events[0].id;
+    console.log("Event ID:", this.events[0].id);
   }
 }

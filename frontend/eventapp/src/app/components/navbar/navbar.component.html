@@ -3,10 +3,21 @@
      <div class="container-left">  
          <img src="assets/logo.png" (click)="onClick()" alt="logo" class="logo">
          <span>EventApp</span>
+         @if (loggedIn) {
+          <input type="button" routerLink="/events" value="Events" routerLinkActive="active" class="login-btn">
+        <input type="button" routerLink="/myevents" value="My Events" routerLinkActive="active" class="login-btn">
+        <input type="button" routerLink="/feedback" value="Feedback" routerLinkActive="active" class="login-btn">
+          
+         }
      </div>
      <div class="container-right">
+      @if (!loggedIn) {
        <input type="button" routerLink="/" value="Login" routerLinkActive="active" class="login-btn">
        <input type="button" routerLink="/register" value="Register" routerLinkActive="active" >
+       }
+       @else {
+        <input type="button" (click)="onLogout()" value="Logout" class="login-btn">
+       }
      </div>
    </div>
      <hr>

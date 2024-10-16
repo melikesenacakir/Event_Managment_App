@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>backend</name>
+    </assembly>
+    <members>
+        <member name="M:backend.Controllers.Events.GetEvents">
+            <summary>returns all events </summary>
+        </member>
+        <member name="M:backend.Controllers.Events.GetEvent(System.Int32)">
+            <summary>returns events by id </summary>
+        </member>
+        <member name="M:backend.Controllers.Events.CreateEvent(backend.DTOs.CreateEventDTO,System.Guid)">
+            <summary>Creates an event </summary>
+        </member>
+        <member name="T:backend.Migrations.init">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddCreatedByColumn">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddCreatedByColumn.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddCreatedByColumn.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddCreatedByColumn.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:backend.Migrations.AddFeedbackToFeedbacks">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddFeedbackToFeedbacks.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddFeedbackToFeedbacks.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:backend.Migrations.AddFeedbackToFeedbacks.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
