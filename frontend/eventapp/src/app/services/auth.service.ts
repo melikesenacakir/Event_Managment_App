@@ -13,10 +13,17 @@ export class AuthService {
 
   constructor(private http: HttpClient,private router: Router) { }
 
-  login(username: string, password: string):Observable<User | undefined>{
-    var result= this.http.post<any>(`${this.url}/login`, {username, password});
-    console.log(result);
-    return result;
+  async login(username: string, password: string){
+    try{
+      const response = await firstValueFrom(this.http.post<any>(`${this.url}/login`, {username, password},{responseType: 'json'}));
+      const token = response.token;
+      localStorage.setItem ('token', token);
+    }catch(error){
+      return error.error;
+    }
+    this.router.navigateByUrl('/home').then(() => {
+      window.location.reload();
+  });
   }
 
   async register(user: any) {

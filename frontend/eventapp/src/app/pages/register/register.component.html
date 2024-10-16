@@ -5,7 +5,7 @@
         <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
     </mat-grid-tile>
     <mat-grid-tile colspan="6" class="container">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="card" >
+    <form [formGroup]="registerForm" class="card" >
         <div>
             <label for="name" class="user-label">Name</label>
             <input type="text" id="name" formControlName="name" name="name">
@@ -16,7 +16,7 @@
         </div>
         <div>
             <label for="email" class="user-label">Email</label>
-            <input type="email" id="email" formControlName="email" name="email">
+            <input type="email" id="email" formControlName="email" name="email" required email>
         </div>
         <div>
             <label for="username" class="user-label">Username</label>
@@ -27,15 +27,9 @@
             <input type="password" id="password" formControlName="password" name="password">
         </div>
         <div>
-           <button type="submit" (click)="onClick()" [disabled]="!registerForm.valid">Register</button>
+        <button type="submit" (click)="onClick()">Register</button>
         </div>
     </form>
-    <div >
-        @if (registerError) {
-            <p>{{ registerError }}</p>
-        }
-    </div>
-    
     </mat-grid-tile>
     <mat-grid-tile colspan="3" class="bear-img">
         <img src="assets/bear.png" alt="bear" class="bear imgs">

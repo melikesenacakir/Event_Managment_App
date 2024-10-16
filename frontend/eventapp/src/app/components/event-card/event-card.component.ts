@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MAT_DIALOG_DATA, MatDialogRef,MatDialog,MatDialogModule } from '@angular/material/dialog';
-import { RouterLink, RouterOutlet, RouterLinkActive,Router } from '@angular/router';
+import { RouterLink, RouterOutlet, RouterLinkActive,Router, NavigationExtras } from '@angular/router';
 import { JoinComponent } from './join/join.component';
 
 @Component({
@@ -33,17 +33,19 @@ export class EventCardComponent {
       description: [''],
       date: [''],
       location: [''],
+      time: [''],
       image: ['']
     });
   }
   
 
   onClose(): void {
-    this.dialogRef.close(true);
+    if(this.dialogRef){
+      this.dialogRef.close();
+    }
   }
 
   ngOnInit(): void {
-    console.log("burası dialog",this.event);
     this.getEvent(this.event);
   }
 
@@ -51,8 +53,14 @@ export class EventCardComponent {
     this.events.push(event);
   }
   join(): void{
+    if(this.dialogRef){
       this.dialogRef.close();
-      this.router.navigate(['/events/join']);
+    }
+    const navigationExtras: NavigationExtras = {
+      queryParams: { eventId: this.event.id, eventName: this.event.title }
+    };
+
+      this.router.navigate(['/events/join'], navigationExtras);
   }
   
 }

@@ -1,6 +1,4 @@
-import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { MatDialogRef,MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatGridList,MatGridListModule } from '@angular/material/grid-list';

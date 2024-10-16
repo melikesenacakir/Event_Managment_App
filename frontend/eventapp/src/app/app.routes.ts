@@ -14,17 +14,18 @@ import { EventFilterComponent } from './components/event-filter/event-filter.com
 import { OrganizationComponent } from './pages/event/organization/organization.component';
 import { AppComponent } from './app.component';
 import { MainEventComponent } from './pages/event/main-event/main-event.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {path: '', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent,canActivate: [authGuard]},
     {path: 'forgetpass', component: ForgetpasswordComponent},
-    {path: 'profile',component: ProfileComponent},
-    {path: 'events',component: MainEventComponent, children: [{path: 'join', component: JoinComponent},{path: '',component:EventComponent},{path: '',pathMatch: 'full',redirectTo: 'events'}]},
-    {path: 'feedback',component: FeedbacksComponent},
-    {path: 'myevents',component: UserEventsComponent},
-    {path: 'filter',component: EventFilterComponent},
-    {path: 'organization', component: OrganizationComponent},
+    {path: 'profile',component: ProfileComponent,canActivate: [authGuard]},
+    {path: 'events',component: MainEventComponent, children: [{path: 'join', component: JoinComponent},{path: '',component:EventComponent},{path: '',pathMatch: 'full',redirectTo: 'events'}],canActivate: [authGuard]},
+    {path: 'feedback',component: FeedbacksComponent,canActivate: [authGuard]},
+    {path: 'myevents',component: UserEventsComponent,canActivate: [authGuard]},
+    {path: 'filter',component: EventFilterComponent,canActivate: [authGuard]},
+    {path: 'organization', component: OrganizationComponent,canActivate: [authGuard]},
     {path: '**', component: NotFoundComponent } //iki yıldız içerisindeki hiçbir pathle eşleşmiyorsa demektir.
 ];

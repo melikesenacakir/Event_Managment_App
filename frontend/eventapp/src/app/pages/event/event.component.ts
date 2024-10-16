@@ -136,7 +136,7 @@ export class EventComponent {
   async onClick(id: number): Promise<void> {
     await this.getEvent(id);
      const inp= this.dialogRef.open(EventCardComponent, {
-        width: '30vw',
+        width: '23vw',
         height: '80vh',
         data: { event: this.event }
       });

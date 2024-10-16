@@ -12,7 +12,6 @@ using backend.Mappers;
 using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace backend.Controllers
 {

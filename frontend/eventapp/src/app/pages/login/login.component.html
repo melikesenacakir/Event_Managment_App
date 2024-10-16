@@ -5,7 +5,7 @@
         <img src="assets/hiking.png" alt="hiking" class="hiking imgs">
     </mat-grid-tile>
     <mat-grid-tile colspan="6" class="container">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card" >
+    <form [formGroup]="loginForm" class="card" >
         <div>
             <label for="username" class="user-label">Username</label>
             <input type="text" id="username" formControlName="username" name="username">
@@ -13,6 +13,7 @@
         <div>
             <label for="password" class="user-label">Password</label>
             <input type="password" id="password" formControlName="password" name="password">
+            
         </div>
         <div class="forgetpass">
             <mat-radio-group formControlName="forgetpassword" class="forgetpass" (click)="openNewPasswordPage()">
@@ -20,15 +21,10 @@
             </mat-radio-group>
         </div>
         <div>
-           <button type="submit" [disabled]="!loginForm.valid">Login</button>
+           <button type="submit" (click)="onSubmit()">Login</button>
         </div>
     </form>
     
-    <div>
-        @if (loginError) {
-            <p>{{ loginError }}</p>
-        }
-    </div>
     
     </mat-grid-tile>
     <mat-grid-tile colspan="3" class="bear-img">
