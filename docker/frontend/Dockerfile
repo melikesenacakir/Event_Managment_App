@@ -1,11 +1,11 @@
-FROM node:20.13.1-alpine
-ENV TZ=UTC 
+FROM node:alpine
 WORKDIR /app
 
-COPY ./package.json /app
+COPY package*.json ./
 
 RUN npm install
+RUN npm install -g @angular/cli
 
 COPY . .
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "serve"]
