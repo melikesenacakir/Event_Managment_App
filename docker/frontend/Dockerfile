@@ -8,4 +8,4 @@ RUN npm install -g @angular/cli
 
 COPY . .
 
-CMD ["npm", "serve"]
+CMD ["ng", "serve"]
