@@ -1,0 +1,25 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+# Copy solution file
+COPY backend/Application/Event_Managment_App.sln ./backend/Application/
+
+# Copy all project files
+COPY backend/Application/Application.csproj ./backend/Application/
+COPY backend/Core/Core.csproj ./backend/Core/
+COPY backend/Infra/Infra.csproj ./backend/Infra/
+
+# Restore dependencies
+RUN dotnet restore backend/Application/Event_Managment_App.sln
+
+# Copy source code
+COPY backend/ ./backend/
+
+# Build and publish
+RUN dotnet publish backend/Application/Application.csproj -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build /app/out .
+ENTRYPOINT ["dotnet", "Application.dll"]

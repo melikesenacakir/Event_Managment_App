@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Events } from '../datasources/event.datasource';
 import { Event } from '../models/event';
-import { map, Observable,of } from 'rxjs';
+import { endWith, map, Observable,of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { buildApiUrl, endpoints } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-
-  private url = 'http://localhost:5214/api/private/events';
 
   private getHeaders(): HttpHeaders {
     const authToken = localStorage.getItem('token');
@@ -23,7 +22,7 @@ export class EventsService {
 
     getEvents(): Observable<Event[]> {
       const headers = this.getHeaders();
-      return this.http.get<any>(this.url,{headers}).pipe(
+      return this.http.get<any>(buildApiUrl(endpoints.private.events.getEvents),{headers}).pipe(
         map(response => response.$values as Event[])
       );
     }
@@ -48,7 +47,7 @@ export class EventsService {
     getEvent(id: number): Observable<Event>{
       var events: Event;
       const headers = this.getHeaders();
-      return this.http.get<any>(`${this.url}/${id}`,{headers})
+      return this.http.get<any>(buildApiUrl(endpoints.private.events.getEvent) + `/${id}`,{headers})
       .pipe(
         map(response => {
           const event =response.$values[0];
@@ -70,7 +69,7 @@ export class EventsService {
 
     joinEvent(eventId: number, event: Event): Observable<void> {
       const headers = this.getHeaders();
-      return this.http.post<any>(`${this.url}/participate/${eventId}`, event,{headers}).pipe(
+      return this.http.post<any>(buildApiUrl(endpoints.private.events.joinEvent)+`/${eventId}`, event,{headers}).pipe(
         map(response => {
           const event = response.$values[0];
           Events.push(event);

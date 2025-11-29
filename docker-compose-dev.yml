@@ -1,0 +1,31 @@
+services:
+   frontend:
+      container_name: frontend-dev
+      build: 
+         context: ./frontend/eventapp
+         dockerfile: ../../docker/frontend/Dockerfile.dev
+      volumes:
+         - ./frontend/eventapp:/app
+         - ./frontend/eventapp/node_modules:/app/node_modules
+      ports:
+         - "4200:4200"
+      environment:
+         - NODE_ENV=development
+      networks:
+         - eventApp
+   
+   backend:
+      container_name: backend-dev
+      build: 
+         context: ./backend
+         dockerfile: ../docker/backend/Dockerfile.dev
+      volumes:
+         - ./backend:/app
+      networks:
+         - eventApp
+
+networks:
+   eventApp:
+
+volumes:
+  node_modules: {}

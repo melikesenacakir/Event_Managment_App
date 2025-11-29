@@ -3,18 +3,17 @@ import { User } from '../models/user';
 import { Users } from '../datasources/users.datasource';
 import { map, Observable,of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { buildApiUrl, config, endpoints } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private url = 'http://localhost:5214/api/private/users';
-
   constructor(private http: HttpClient) { }
 
   getUsers():Observable<User[]>{
-    return this.http.get<any>(this.url).pipe(
+    return this.http.get<any>(buildApiUrl(endpoints.private.users.getUsers)).pipe(
       map(response => response.$values as User[])
     ); 
   }

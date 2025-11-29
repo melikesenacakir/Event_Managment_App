@@ -1,0 +1,53 @@
+services:
+   frontend:
+      container_name: frontend-prod
+      build: 
+         context: ./frontend/eventapp
+         dockerfile: ../../docker/frontend/Dockerfile.prod
+      ports:
+         - "4200:4200"
+      environment:
+      - NODE_ENV=production
+      networks:
+         - eventApp
+   
+   backend:
+      container_name: backend-prod
+      build: 
+         context: .
+         dockerfile: ./docker/backend/Dockerfile.prod
+      ports:
+         - "5000:8080"
+      depends_on:
+         - sqlserver
+      networks:
+         - eventApp
+
+   sqlserver:
+      container_name: sqlserver-prod
+      image: mcr.microsoft.com/mssql/server:2022-latest
+      environment:
+         - ACCEPT_EULA=Y
+         - SA_PASSWORD=Admin123!@#
+         - MSSQL_PID=Express
+         - MSSQL_DATABASE=EventDB
+      ports:
+         - "1433:1433"
+      volumes:
+         - sqlserver_data:/var/opt/mssql
+      networks:
+         - eventApp
+
+   redis:
+      container_name: redis-prod
+      image: redis:7-alpine
+      ports:
+         - "6379:6379"
+      networks:
+         - eventApp
+
+networks:
+   eventApp:
+
+volumes:
+   sqlserver_data:

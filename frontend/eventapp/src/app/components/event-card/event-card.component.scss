@@ -1,17 +1,17 @@
 .container {
-    display: flex;
-    height: 80vh;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    height: 100vh; 
   }
   
   .card {
     background-color: #FFFFFF;
     border-radius: 20px;
-    min-width: 80px;
     display: flex;
     flex-direction: column;
     height: fit-content;
-    max-height: 90vh; 
-    max-width: 90vw;
   
   }
   img{

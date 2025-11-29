@@ -47,13 +47,13 @@ export class LoginComponent {
       inp.componentInstance.message = 'Username and password are required';
       return;
     }
-    var message=await this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
-    if (message==EMPTY){
-      const inp= this.dialogRef.open(PopupComponent, {
+    var message = await this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
+    if (!message.success) {
+      const inp = this.dialogRef.open(PopupComponent, {
         width: '30vw',
         height: '20vh',
       });
-      inp.componentInstance.message = message;
+      inp.componentInstance.message = message.error || 'Login failed';
     }
      
   } 

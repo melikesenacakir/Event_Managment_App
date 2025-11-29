@@ -1,5 +1,5 @@
-<mat-grid-list cols="12">
-    <mat-grid-tile colspan="12" class="container">
+<!-- <mat-grid-list cols="12"> -->
+    <div class="container">
         <form [formGroup]="eventForm" class="card">
         <div *ngFor="let event of events;">
           <div class="profile">
@@ -10,6 +10,7 @@
             </div>
             <button matSuffix mat-icon-button class="close" (click)="onClose()"><span class="material-icons">close</span></button> 
           </div>
+          
             <img [src]="event?.image" alt="event image" class="event-image">
             <div class="icon-text">
                 <span class="material-icons">event</span>
@@ -27,5 +28,5 @@
         </div>
       </div>
       </form>
-    </mat-grid-tile>
-  </mat-grid-list>
+    </div>
+  <!-- </mat-grid-list> -->
